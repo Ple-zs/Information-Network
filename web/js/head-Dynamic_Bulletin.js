@@ -31,10 +31,10 @@ function switchChar(char,n){
       break;
     }
     $(".flip").eq(n).attr("value",char);
-    $(".flip").eq(n).find("ul").animate({top: "-=70px"},100);
+    $(".flip").eq(n).find("ul").animate({top: "-=70px"},50);
   }
   if(complete == false){
-    $(".flip").eq(n).find("ul").animate({top: "0px"},100);
+    $(".flip").eq(n).find("ul").animate({top: "0px"},50);
     start = 0;
      for(var i=start;i<charList.length;i++){
       if(charList[i] == char){
@@ -42,7 +42,7 @@ function switchChar(char,n){
         complete = true;
       }
       $(".flip").eq(n).attr("value",char);
-      $(".flip").eq(n).find("ul").animate({top: "-=70px"},100);
+      $(".flip").eq(n).find("ul").animate({top: "-=70px"},50);
     }
   }
 }
