@@ -10,13 +10,20 @@
   <head>
     <title>资讯网首页</title>
     <link rel="stylesheet" type="text/css" href="css/head-Dynamic_Bulletin.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script src='js/jquery-3.4.1.js'></script>
   </head>
   <body>
-  <div class='wrapper'>
-    <div class='flip'></div>
-  </div>
-  <input class="header-panel-input" placeholder='CONTENT' type='text'>
-  <script src='js/jquery-3.4.1.js'></script>
-  <script src="js/head-Dynamic_Bulletin.js"></script>
+
+    <header>
+      <div class='wrapper'>
+        <div class='flip'></div>
+      </div>
+<%--      <input class="header-panel-input" placeholder='CONTENT' type='text'>--%>
+    </header>
+
+
+
+    <script src="js/head-Dynamic_Bulletin.js"></script>
   </body>
 </html>
