@@ -1,31 +1,33 @@
-var charList = [" ", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "\"", "$", "%", "&", "/", "(", ")", "=", "?", "+", "*", "#", "'", ":", ";", "-", ".", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+const charList = [" ", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "\"", "$", "%", "&", "/", "(", ")", "=", "?", "+", "*", "#", "'", ":", ";", "-", ".", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
-var randomAirportNames = ["EDINBURGH","DYCE","GLASGOW","LONDON HEATHROW","JFK INTERNATIONAL","FRANKFURT","BERLIN","PARIS","ROME","WASHINGTON DC","HONG KONG","SYDNEY","DUBLIN","MOON","SKIPHOL","WARSAW","HONOLULU","ZURICH"];
+const randomAirportNames = ["EDINBURGH", "DYCE", "GLASGOW", "LONDON HEATHROW", "JFK INTERNATIONAL", "FRANKFURT", "BERLIN", "PARIS", "ROME", "WASHINGTON DC", "HONG KONG", "SYDNEY", "DUBLIN", "MOON", "SKIPHOL", "WARSAW", "HONOLULU", "ZURICH"];
 
 $(document).ready(function(){
-  anewNested();
-  $(".header-panel-input").focus();
-    var msg = "HELLO-WORLD-TWO";
-  $(".header-panel-input").val(msg);
-  showContent(msg);
-  $(".header-panel-input").blur(function(){
-	//赋值显示
-	var msg = $("input").val();
-	showContent(msg);
-  });
+    const msg = "HELLO-WORLD-TWO";
+    showContent(msg);
+    $(".header-panel-input").val(msg);
+    setInterval(function () {
+      showContent(null);
+    },8000);
+    $(".header-panel-input").blur(function(){
+	    //赋值显示
+        const msg = $("input").val();
+        showContent(msg);
+    });
 });
 
 function switchChar(char,n){
-  var current = $(".flip").eq(n).attr("value");
+  let i;
+    var current = $(".flip").eq(n).attr("value");
   var start = 0;
-  for(var i=0;i<charList.length;i++){
+  for(i = 0; i<charList.length; i++){
     if(charList[i] == current){
       start = i;
       break;
     } 
   }
   var complete = false;
-  for(var i=start;i<charList.length;i++){
+  for(i = start; i<charList.length; i++){
     if(charList[i] == char){
       complete = true;
       break;
@@ -36,7 +38,7 @@ function switchChar(char,n){
   if(complete == false){
     $(".flip").eq(n).find("ul").animate({top: "0px"},50);
     start = 0;
-     for(var i=start;i<charList.length;i++){
+     for(i = start; i<charList.length; i++){
       if(charList[i] == char){
         break;
         complete = true;
@@ -59,17 +61,20 @@ function anewNested(){
 }
 
 function showContent(msg) {
-    //随机显示
-    //var random = Math.round(Math.random()*randomAirportNames.length);
-    //var msg = randomAirportNames[random]+"                                    ";
+    let k;
+    if (msg == null || msg.trim() == ""){
+        const random = Math.round(Math.random() * randomAirportNames.length);
+        msg = randomAirportNames[random];
+    }
     $(".wrapper").children().remove();
-    for(var k =0;k<msg.length;k++){
+    console.log(msg);
+    for(k = 0; k<msg.length; k++){
         $(".wrapper").append("<div class='flip'></div>");
     }
     anewNested();
-    var msgEx = msg.split("");
-    var showGridCount = msgEx.length;
-    for(var k=0;k<msgEx.length;k++){
+    const msgEx = msg.split("");
+    const showGridCount = msgEx.length;
+    for(k = 0; k<msgEx.length; k++){
         switchChar(msgEx[k],k);
     }
 }
